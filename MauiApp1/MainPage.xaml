@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             xmlns:controls="clr-namespace:MauiApp1.Controls"
+             xmlns:converters="clr-namespace:MauiApp1.Converters">
+
+<ScrollView>
+    <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+        <Entry Text="{Binding Name}" />
+        <Entry Text="{Binding Age}" />
+        <HorizontalStackLayout>
+            <Button Text="Добавить" Command="{Binding AddCommand}" />
+            <Button Text="Удалить" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference list}, Path=SelectedItem}" />
+        </HorizontalStackLayout>
+        
+
+        <ListView x:Name="list" ItemsSource="{Binding Persons}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Age}" />
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        
+
+    </VerticalStackLayout>
+</ScrollView>
+
+</ContentPage>
